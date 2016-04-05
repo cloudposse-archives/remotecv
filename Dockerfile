@@ -3,13 +3,13 @@ FROM python:2
 VOLUME /logs
 VOLUME /data
 
-ENV HOME /usr/src/app
+ENV HOME /app
 ENV SHELL bash
-ENV WORKON_HOME /usr/src/app
+ENV WORKON_HOME /app
 
 ADD *.txt /tmp/
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 RUN apt-get update && \
     apt-get -y upgrade && \
