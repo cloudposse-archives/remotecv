@@ -16,7 +16,7 @@ if [ -n "$SENTRY_URL" ]; then
 fi
 
 if [ "$1" = 'remotecv' ]; then
-  exec remotecv --host $REDIS_HOST --port $REDIS_PORT --database $REDIS_DATABASE -l $LOG_LEVEL -o $LOADER -s $STORE $TIMEOUT_PARAMETER $SENTRY_URL_PARAMETER
+  exec remotecv --backend pyres --host $REDIS_HOST --port $REDIS_PORT --database $REDIS_DATABASE -l $LOG_LEVEL -o $LOADER -s $STORE $TIMEOUT_PARAMETER $SENTRY_URL_PARAMETER
 fi
 
 exec "$@"
