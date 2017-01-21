@@ -15,8 +15,18 @@ if [ -n "$SENTRY_URL" ]; then
   SENTRY_URL_PARAMETER="--sentry_url $SENTRY_URL"
 fi
 
+if [ -n "$REDIS_PASSWORD" ]; then
+  REDIS_PASSWORD_PARAMETER="--password $REDIS_PASSWORD"
+fi
+
 if [ "$1" = 'remotecv' ]; then
-  exec remotecv --backend pyres --host $REDIS_HOST --port $REDIS_PORT --database $REDIS_DATABASE -l $LOG_LEVEL -o $LOADER -s $STORE $TIMEOUT_PARAMETER $SENTRY_URL_PARAMETER
+  exec remotecv --backend pyres \
+                --host $REDIS_HOST \
+                --port $REDIS_PORT \
+                --database $REDIS_DATABASE \
+                -l $LOG_LEVEL \
+                -o $LOADER \
+                -s $STORE $TIMEOUT_PARAMETER $SENTRY_URL_PARAMETER $REDIS_PASSWORD_PARAMETER
 fi
 
 exec "$@"
